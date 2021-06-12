@@ -41,12 +41,16 @@
             <br>
             <p>atau</p>
             <label for="file_name">Pilih File</label>
-            <select name="file_name" id="select" class="form-select" aria-label="Default select example">
-                <option selected>{{new_name}}</option>
-                {% for x in data %}
-                <option value="{{x}}">{{x}}</option>
-                {% endfor %}
-            </select>
+            <div class="d-flex flex-row">
+                <select name="file_name" id="select" class="form-select" aria-label="Default select example">
+                    <option selected>{{new_name}}</option>
+                    {% for x in data %}
+                    <option value="{{x}}">{{x}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" name="submit_button" class="btn btn-outline-dark" value="Load">
+
+            </div>
             <!-- <label for="textarea" class="form-label">Masukkan Info Gempa</label> -->
             <br>
             <textarea class="form-control" id="textarea" name="textarea" rows="3"></textarea>
@@ -55,7 +59,7 @@
                 <div>
                     <input type="submit" name="submit_button" class="btn btn-outline-dark" value="Save">
                 </div>
-                <a href="/static/file/Laporan Jumlah Gempa.xlsx" download>
+                <a href="/static/file/data/{{path_download}}" download>
                     <img src="/static/img/excel.png" alt="xlsx" width="50" height="55">
                 </a>
             </div>

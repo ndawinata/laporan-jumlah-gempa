@@ -17,6 +17,13 @@ app.config['UPLOAD_FOLDER'] = 'static'
 def uploadFile():
     if request.method == 'POST':
         
+        if request.form['submit_button'] == 'Load': 
+            name = request.form['file_name']
+            
+            dat = os.listdir('./static/file/data')
+            
+            return render_template('index.html', new_name=name, show="d-none", data=dat, path_download=name)
+        
         if request.form['submit_button'] == 'New': 
             name = request.form['newfile'] + '.xlsx'
             path = "./static/file/data/" + name
@@ -30,7 +37,7 @@ def uploadFile():
             
             dat = os.listdir('./static/file/data')
             
-            return render_template('index.html', new_name=name, show="d-none", data=dat)
+            return render_template('index.html', new_name=name, show="d-none", data=dat, path_download=name)
         
         if request.form['submit_button'] == 'Save':
             path = "./static/file/data/" + request.form['file_name']
