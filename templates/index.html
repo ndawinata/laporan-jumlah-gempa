@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.bmkg.go.id/asset/img/favicon.ico" type="image/x-icon" >
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Laporan Jumlah Gempa</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Stageof Kupang</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Features</a>
+                </div>
+            </div> -->
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <!-- Content here -->
+        <h3>Laporan Jumlah Gempa</h3>
+        <br>
+        <form enctype="multipart/form-data" method="post">
+            <div class="d-flex flex-row">
+                <input name="newfile" value="{{new_name}}" class="form-control" type="text" placeholder="Buat File Baru" aria-label="default input example">
+                <input type="submit" name="submit_button" class="btn btn-outline-dark" value="New">
+            </div>
+            <br>
+            <p>atau</p>
+            <label for="file_name">Pilih File</label>
+            <select name="file_name" id="select" class="form-select" aria-label="Default select example">
+                <option selected>{{new_name}}</option>
+                {% for x in data %}
+                <option value="{{x}}">{{x}}</option>
+                {% endfor %}
+            </select>
+            <!-- <label for="textarea" class="form-label">Masukkan Info Gempa</label> -->
+            <br>
+            <textarea class="form-control" id="textarea" name="textarea" rows="3"></textarea>
+            <br>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <input type="submit" name="submit_button" class="btn btn-outline-dark" value="Save">
+                </div>
+                <a href="/static/file/Laporan Jumlah Gempa.xlsx" download>
+                    <img src="/static/img/excel.png" alt="xlsx" width="50" height="55">
+                </a>
+            </div>
+        </form>
+        <br>
+        <div id="success-alert" class="{{show}} alert alert-success alert-dismissible fade show" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <script>
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+            $("#success-alert").slideUp(500);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
