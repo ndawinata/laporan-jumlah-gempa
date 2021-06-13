@@ -28,7 +28,7 @@ def uploadFile():
             name = (request.form['newfile']).replace(" ","_") + '.xlsx'
             path = "./static/file/data/" + name
             
-            wb = load_workbook(filename="./static/file/templatexls/Laporan Jumlah Gempa.xlsx" )
+            wb = load_workbook(filename="./static/file/templatexls/Laporan_Jumlah_Gempa.xlsx" )
             
             ws = wb.active
             
