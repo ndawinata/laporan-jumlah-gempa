@@ -18,14 +18,14 @@ def uploadFile():
     if request.method == 'POST':
         
         if request.form['submit_button'] == 'Load': 
-            name = request.form['file_name']
+            name = (request.form['file_name']).replace(" ","_")
             
             dat = os.listdir('./static/file/data')
             
             return render_template('index.html', new_name=name, show="d-none", data=dat, path_download=name)
         
         if request.form['submit_button'] == 'New': 
-            name = request.form['newfile'] + '.xlsx'
+            name = (request.form['newfile']).replace(" ","_") + '.xlsx'
             path = "./static/file/data/" + name
             
             wb = load_workbook(filename="./static/file/templatexls/Laporan Jumlah Gempa.xlsx" )
@@ -40,7 +40,8 @@ def uploadFile():
             return render_template('index.html', new_name=name, show="d-none", data=dat, path_download=name)
         
         if request.form['submit_button'] == 'Save':
-            path = "./static/file/data/" + request.form['file_name']
+            name = (request.form['file_name']).replace(" ","_")
+            path = "./static/file/data/" + name
             
             wb = load_workbook(filename=path )
 

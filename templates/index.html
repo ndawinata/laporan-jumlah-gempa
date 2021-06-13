@@ -17,7 +17,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Stageof Kupang</a>
+            <a class="navbar-brand" href="/">Stageof Kupang</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,6 +34,7 @@
         <h3>Laporan Jumlah Gempa</h3>
         <br>
         <form enctype="multipart/form-data" method="post">
+            <label for="newfile">Buat File Baru</label>
             <div class="d-flex flex-row">
                 <input name="newfile" value="{{new_name}}" class="form-control" type="text" placeholder="Buat File Baru" aria-label="default input example">
                 <input type="submit" name="submit_button" class="btn btn-outline-dark" value="New">
@@ -53,6 +54,7 @@
             </div>
             <!-- <label for="textarea" class="form-label">Masukkan Info Gempa</label> -->
             <br>
+            <label for="textarea">Masukkan info gempa</label>
             <textarea class="form-control" id="textarea" name="textarea" rows="3"></textarea>
             <br>
             <div class="d-flex justify-content-between">
